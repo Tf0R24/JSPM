@@ -2,12 +2,25 @@ window.addEventListener('load', function () {
 
     const passLength = 16;
 
-    const password = genPassword(passLength);
-    const hashedPassword = hash(password);
-    console.log(`Generated Password: ${password}`);
-    console.log(`Hashed Password: ${hashedPassword}`)
+    const wrapper = this.document.getElementsByClassName("wrapper")[0];
+
+    const button = this.document.createElement('button');
+    button.innerHTML = "Generate!"
+    button.addEventListener("click", /*Do Animation Setup */);
+    wrapper.appendChild(button);
+
+    let testbaffle = baffle('.testp',{
+        speed: 10
+    });
+
+    testbaffle.start();
+
 
 })
+
+function animate {
+    
+}
 
 function genPassword(passLength) {
     let password = '';
@@ -19,13 +32,6 @@ function genPassword(passLength) {
     }
     return password;
 }
-
-function hash(toHashString){
-    argon2.hash({ pass: toHashString, salt: genPassword(32) })
-    .then(h => console.log(h.hash, h.hashHex, h.encoded))
-    .catch(e => console.error(e.message, e.code))
-}
-
 function randInt(charactersLength) {
     return Math.floor(Math.random() * (charactersLength - 0) + 0); // The maximum is exclusive and the minimum is inclusive
 }
